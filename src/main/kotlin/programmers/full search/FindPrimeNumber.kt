@@ -1,4 +1,3 @@
-import kotlin.test.assertEquals
 
 /*
  * 2020-09-02
@@ -55,9 +54,9 @@ class FindPrimeNumber {
 }
 
 fun main(args: Array<String>) {
-    listOf(Pair("011", 2), Pair("17",3), Pair("2",1)).forEach {
-        assertEquals(it.second, FindPrimeNumber().solution(
-            it.first
-        ))
-    }
+//    listOf(Pair("011", 2), Pair("17",3), Pair("2",1)).forEach {
+//        assertEquals(it.second, FindPrimeNumber().solution(
+//            it.first
+//        ))
+//    }
 }
