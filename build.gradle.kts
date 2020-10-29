@@ -1,9 +1,14 @@
 plugins {
     id("org.jetbrains.kotlin.jvm") version "1.4.10"
+    id("jacoco")
 }
 
 group "programmers"
 version "1.0-SNAPSHOT"
+
+jacoco{
+    toolVersion = "0.8.5"
+}
 
 repositories {
     mavenCentral()
@@ -24,4 +29,11 @@ tasks {
     test{
         useJUnitPlatform()
     }
+    jacocoTestReport {
+        reports{
+            xml.isEnabled = true
+            html.isEnabled = true
+        }
+    }
 }
+
