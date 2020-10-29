@@ -3,7 +3,7 @@ plugins {
     id("jacoco")
 }
 
-group "programmers"
+group "study"
 version "1.0-SNAPSHOT"
 
 jacoco{
