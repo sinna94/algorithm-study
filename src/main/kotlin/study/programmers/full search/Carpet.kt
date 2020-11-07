@@ -6,17 +6,17 @@
  */
 
 class Carpet {
-    fun solution(brown: Int, yellow: Int): IntArray {
-        var answer = intArrayOf()
+  fun solution(brown: Int, yellow: Int): IntArray {
+    val answer = intArrayOf()
 
-        for (i in 1..yellow) {
-            for (j in 1..yellow) {
-                if (i >= j && i * j == yellow && (i + 2) * (j + 2) - yellow == brown) {
-                    return intArrayOf(i + 2, j + 2)
-                }
-            }
+    for (i in 1..yellow) {
+      for (j in 1..yellow) {
+        if (i >= j && i * j == yellow && (i + 2) * (j + 2) - yellow == brown) {
+          return intArrayOf(i + 2, j + 2)
         }
-
-        return answer
+      }
     }
+
+    return answer
+  }
 }

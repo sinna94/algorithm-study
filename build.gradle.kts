@@ -1,10 +1,11 @@
 plugins {
     id("org.jetbrains.kotlin.jvm") version "1.4.10"
     id("jacoco")
+    id("org.jmailen.kotlinter") version "3.2.0"
 }
 
-group "study"
-version "1.0-SNAPSHOT"
+group = "study"
+version = "1.0-SNAPSHOT"
 
 jacoco{
     toolVersion = "0.8.5"
@@ -26,14 +27,14 @@ tasks {
     compileTestKotlin {
         kotlinOptions.jvmTarget = "1.8"
     }
-    test{
-        useJUnitPlatform()
+  test {
+    useJUnitPlatform()
+  }
+  jacocoTestReport {
+    reports {
+      xml.isEnabled = true
+      html.isEnabled = true
     }
-    jacocoTestReport {
-        reports{
-            xml.isEnabled = true
-            html.isEnabled = true
-        }
-    }
+  }
 }
 

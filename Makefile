@@ -1,0 +1,2 @@
+lint :
+	gradlew formatKotlin lintKotlin
