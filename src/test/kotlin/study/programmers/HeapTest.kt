@@ -1,4 +1,4 @@
-package study.programmers;
+package study.programmers
 
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
@@ -7,13 +7,14 @@ import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
 import study.programmers.heap.DiskController
 import study.programmers.heap.MoreSpicy
+import study.programmers.heap.solveDoublePriorityQueue
 import java.util.stream.Stream
 
 class HeapTest {
     @Test
     fun moreSpicyTest() {
-        val result = MoreSpicy().solution(listOf(1, 2, 3, 9, 10, 12).toIntArray(), 7);
-        assertEquals(2, result);
+        val result = MoreSpicy().solution(listOf(1, 2, 3, 9, 10, 12).toIntArray(), 7)
+        assertEquals(2, result)
     }
 
     companion object {
@@ -74,11 +75,25 @@ class HeapTest {
                 13, arrayOf(intArrayOf(1, 9), intArrayOf(1, 4), intArrayOf(1, 5), intArrayOf(1, 7), intArrayOf(1, 3))
             )
         )
+
+        @JvmStatic
+        fun doublePriorityQueueArgs(): Stream<Arguments> = Stream.of(
+            Arguments.of(arrayOf("I 16", "D 1"), intArrayOf(0, 0)),
+            Arguments.of(arrayOf("I 7", "I 5", "I -5", "D -1"), intArrayOf(7, 5))
+        )
     }
 
     @ParameterizedTest
     @MethodSource("diskControllerArgs")
     fun diskControllerTest(result: Int, jobs: Array<IntArray>) {
         assertEquals(result, DiskController().solution(jobs))
+    }
+
+    @ParameterizedTest
+    @MethodSource("doublePriorityQueueArgs")
+    fun testDoublePriorityQueue(operations: Array<String>, expected: IntArray) {
+        val result = solveDoublePriorityQueue(operations)
+        assertEquals(expected[0], result[0])
+        assertEquals(expected[1], result[1])
     }
 }

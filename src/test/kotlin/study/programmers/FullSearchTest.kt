@@ -1,4 +1,4 @@
-package study.programmers;
+package study.programmers
 
 import Carpet
 import FindPrimeNumber
@@ -17,7 +17,6 @@ class FullSearchTest {
             Arguments.of(10, 2, intArrayOf(4, 3)),
             Arguments.of(8, 1, intArrayOf(3, 3)),
             Arguments.of(24, 24, intArrayOf(8, 6)),
-
             )
 
         @JvmStatic
