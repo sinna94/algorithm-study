@@ -30,7 +30,7 @@ fun network(n: Int, computers: Array<IntArray>): Int {
     // 새로운 네트워크가 발견되면 저장할 newSet 생성
     val newSet = mutableSetOf<Int>()
     // 모든 index Set 끼리 비교
-    networkSet.forEach {network ->
+    networkSet.forEach { network ->
       var isNew = true
       println("network:$network")
       // 결과 Set 과 겹치는 index 가 있으면 합치기
@@ -48,7 +48,7 @@ fun network(n: Int, computers: Array<IntArray>): Int {
       }
     }
     // newSet 의 크기가 컴퓨터 수와 같으면 1 반환
-    if(newSet.count() == n){
+    if (newSet.count() == n) {
       return 1
     }
     // newSet 에 데이터가 있으면 결과 Set 에 추가

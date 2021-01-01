@@ -6,6 +6,7 @@ import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
 import study.programmers.dfs_bfs.network
 import study.programmers.dfs_bfs.targetNumber
+import study.programmers.dfs_bfs.wordConversion
 import java.util.stream.Stream
 
 class DfsBfsTest {
@@ -67,6 +68,14 @@ class DfsBfsTest {
       ),
       Arguments.of(3, arrayOf(intArrayOf(1, 0, 0), intArrayOf(0, 1, 0), intArrayOf(0, 0, 1)), 3)
     )
+
+    @JvmStatic
+    fun wordConversionArgs(): Stream<Arguments> {
+      return Stream.of(
+        Arguments.of("hit", "cog", arrayOf("hot", "dot", "dog", "lot", "log", "cog"), 4),
+        Arguments.of("hit", "cog", arrayOf("hot", "dot", "dog", "lot", "log"), 0)
+      )
+    }
   }
 
   @ParameterizedTest
@@ -79,5 +88,11 @@ class DfsBfsTest {
   @MethodSource("networkArgs")
   fun testNetwork(n: Int, computers: Array<IntArray>, answer: Int) {
     assertEquals(answer, network(n, computers))
+  }
+
+  @ParameterizedTest
+  @MethodSource("wordConversionArgs")
+  fun testWordConversion(begin: String, target: String, words: Array<String>, answer: Int) {
+    assertEquals(answer, wordConversion(begin, target, words))
   }
 }
