@@ -13,7 +13,7 @@ fun targetNumber(numbers: IntArray, target: Int): Int {
   return answer
 }
 
-tailrec fun addNumber(sum: Int, numbers: IntArray, index: Int, target: Int) {
+fun addNumber(sum: Int, numbers: IntArray, index: Int, target: Int) {
   if (numbers.count() == index) {
     if (sum == target)
       answer++

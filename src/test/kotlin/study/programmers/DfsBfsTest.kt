@@ -1,11 +1,13 @@
 package study.programmers
 
+import org.junit.jupiter.api.Assertions.assertArrayEquals
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
 import study.programmers.dfs_bfs.network
 import study.programmers.dfs_bfs.targetNumber
+import study.programmers.dfs_bfs.travelRoute
 import study.programmers.dfs_bfs.wordConversion
 import java.util.stream.Stream
 
@@ -76,6 +78,55 @@ class DfsBfsTest {
         Arguments.of("hit", "cog", arrayOf("hot", "dot", "dog", "lot", "log"), 0)
       )
     }
+
+    @JvmStatic
+    fun travelRouteArgs(): Stream<Arguments> {
+      return Stream.of(
+        Arguments.of(
+          arrayOf(arrayOf("ICN", "JFK"), arrayOf("HND", "IAD"), arrayOf("JFK", "HND")),
+          arrayOf("ICN", "JFK", "HND", "IAD")
+        ),
+        Arguments.of(
+          arrayOf(
+            arrayOf("ICN", "SFO"),
+            arrayOf("ICN", "ATL"),
+            arrayOf("SFO", "ATL"),
+            arrayOf("ATL", "ICN"),
+            arrayOf("ATL", "SFO")
+          ),
+          arrayOf("ICN", "ATL", "ICN", "SFO", "ATL", "SFO")
+        ),
+        Arguments.of(
+          arrayOf(arrayOf("ICN", "JFK"), arrayOf("ICN", "JFK"), arrayOf("HND", "ICN"), arrayOf("JFK", "HND")),
+          arrayOf("ICN", "JFK", "HND", "ICN", "JFK")
+        ),
+        Arguments.of(
+          arrayOf(arrayOf("ICN", "A"), arrayOf("ICN", "B"), arrayOf("B", "ICN")),
+          arrayOf("ICN", "B", "ICN", "A")
+        ),
+        Arguments.of(
+          arrayOf(arrayOf("ICN", "A"), arrayOf("ICN", "A"), arrayOf("A", "ICN")),
+          arrayOf("ICN", "A", "ICN", "A")
+        ),
+        Arguments.of(
+          arrayOf(arrayOf("ICN", "A"), arrayOf("A", "C"), arrayOf("A", "D"), arrayOf("D", "B"), arrayOf("B", "A")),
+          arrayOf("ICN", "A", "D", "B", "A", "C")
+        ),
+        Arguments.of(
+          arrayOf(
+            arrayOf("ICN", "BOO"),
+            arrayOf("ICN", "COO"),
+            arrayOf("COO", "DOO"),
+            arrayOf("DOO", "COO"),
+            arrayOf("BOO", "DOO"),
+            arrayOf("DOO", "BOO"),
+            arrayOf("BOO", "ICN"),
+            arrayOf("COO", "BOO")
+          ),
+          arrayOf("ICN", "BOO", "DOO", "BOO", "ICN", "COO", "DOO", "COO", "BOO")
+        ),
+      )
+    }
   }
 
   @ParameterizedTest
@@ -94,5 +145,13 @@ class DfsBfsTest {
   @MethodSource("wordConversionArgs")
   fun testWordConversion(begin: String, target: String, words: Array<String>, answer: Int) {
     assertEquals(answer, wordConversion(begin, target, words))
+  }
+
+  @ParameterizedTest
+  @MethodSource("travelRouteArgs")
+  fun testTravelRoute(ticket: Array<Array<String>>, answer: Array<String>) {
+    val result = travelRoute(ticket)
+    println(result.joinToString())
+    assertArrayEquals(answer, result)
   }
 }
