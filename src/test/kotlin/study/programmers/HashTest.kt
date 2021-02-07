@@ -1,6 +1,6 @@
 package study.programmers
 
-import BestAlbum
+import study.programmers.hash.BestAlbum
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 

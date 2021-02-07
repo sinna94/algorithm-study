@@ -1,3 +1,5 @@
+package study.programmers.hash
+
 class BestAlbum {
   fun solution(genres: Array<String>, plays: IntArray): IntArray {
     val songMap = HashMap<String, MutableList<Song>>()
