@@ -5,6 +5,7 @@ import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
 import study.programmers.dynamic_programming.IntegerTriangle
+import study.programmers.dynamic_programming.RoadToSchool
 import study.programmers.dynamic_programming.expressedByN
 import java.util.stream.Stream
 
@@ -23,6 +24,11 @@ class DynamicProgrammingTest {
     fun integerTriangleArgs(): Stream<Arguments> = Stream.of(
       Arguments.of(arrayOf(intArrayOf(7), intArrayOf(3, 8), intArrayOf(8, 1, 0), intArrayOf(2, 7, 4, 4), intArrayOf(4, 5, 2, 6, 5)), 30)
     )
+
+    @JvmStatic
+    fun roadToSchoolArgs(): Stream<Arguments> = Stream.of(
+      Arguments.of(4, 3, arrayOf(intArrayOf(2, 2)), 4)
+    )
   }
 
   @ParameterizedTest
@@ -35,5 +41,11 @@ class DynamicProgrammingTest {
   @MethodSource("integerTriangleArgs")
   fun testIntegerTriangle(triangle: Array<IntArray>, answer: Int) {
     assertEquals(answer, IntegerTriangle().solution(triangle))
+  }
+
+  @ParameterizedTest
+  @MethodSource("roadToSchoolArgs")
+  fun testRoadToSchool(m: Int, n: Int, puddles: Array<IntArray>, answer: Int) {
+    assertEquals(answer, RoadToSchool().solution(m, n, puddles))
   }
 }
