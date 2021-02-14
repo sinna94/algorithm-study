@@ -6,6 +6,7 @@ import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
 import study.programmers.dynamic_programming.IntegerTriangle
 import study.programmers.dynamic_programming.RoadToSchool
+import study.programmers.dynamic_programming.Thievery
 import study.programmers.dynamic_programming.expressedByN
 import java.util.stream.Stream
 
@@ -29,6 +30,15 @@ class DynamicProgrammingTest {
     fun roadToSchoolArgs(): Stream<Arguments> = Stream.of(
       Arguments.of(4, 3, arrayOf(intArrayOf(2, 2)), 4)
     )
+
+    @JvmStatic
+    fun thieveryArgs(): Stream<Arguments> = Stream.of(
+      Arguments.of(intArrayOf(1, 2, 3, 1), 4),
+      Arguments.of(intArrayOf(1, 3, 2, 5, 3), 8),
+      Arguments.of(intArrayOf(4, 4, 2, 1, 3), 7),
+      Arguments.of(intArrayOf(11, 1, 9, 10, 9, 1), 29),
+      Arguments.of(intArrayOf(11, 1, 3, 10, 4, 1), 21),
+    )
   }
 
   @ParameterizedTest
@@ -47,5 +57,11 @@ class DynamicProgrammingTest {
   @MethodSource("roadToSchoolArgs")
   fun testRoadToSchool(m: Int, n: Int, puddles: Array<IntArray>, answer: Int) {
     assertEquals(answer, RoadToSchool().solution(m, n, puddles))
+  }
+
+  @ParameterizedTest
+  @MethodSource("thieveryArgs")
+  fun testThievery(money: IntArray, answer: Int) {
+    assertEquals(answer, Thievery().solution(money))
   }
 }
