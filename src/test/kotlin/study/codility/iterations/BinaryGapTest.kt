@@ -22,7 +22,7 @@ class BinaryGapTest {
 
   @ParameterizedTest
   @MethodSource("binaryGapArgs")
-  fun testBinaryGapArgs(A: Int, expected: Int) {
+  fun testBinaryGap(A: Int, expected: Int) {
     Assertions.assertEquals(expected, solution(A))
   }
 }
