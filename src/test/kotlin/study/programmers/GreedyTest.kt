@@ -1,12 +1,14 @@
 package study.programmers
 
-import org.junit.jupiter.api.Assertions
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
 import study.programmers.greedy.gymSuit
 import study.programmers.greedy.joyStick
+import study.programmers.greedy.solution
 import java.util.stream.Stream
+import kotlin.time.ExperimentalTime
 
 class GreedyTest {
   companion object {
@@ -34,17 +36,34 @@ class GreedyTest {
       Arguments.of("AAA", 0),
       Arguments.of("ZZZ", 5),
     )
+
+    @JvmStatic
+    fun makingBigNumArgs() = Stream.of(
+      Arguments.of("1924", 2, "94"),
+      Arguments.of("1231234", 3, "3234"),
+      Arguments.of("4177252841", 4, "775841"),
+      Arguments.of("1924", 3, "9"),
+      Arguments.of("13", 1, "3"),
+      Arguments.of("31", 1, "3"),
+      Arguments.of("111", 2, "1"),
+    )
   }
 
   @ParameterizedTest
   @MethodSource("gymSuitArgs")
   fun testGymSuit(n: Int, lost: IntArray, reserve: IntArray, result: Int) {
-    Assertions.assertEquals(result, gymSuit(n, lost, reserve))
+    assertEquals(result, gymSuit(n, lost, reserve))
   }
 
   @ParameterizedTest
   @MethodSource("joyStickArgs")
   fun testJoyStick(name: String, result: Int) {
-    Assertions.assertEquals(result, joyStick(name))
+    assertEquals(result, joyStick(name))
+  }
+
+  @ParameterizedTest
+  @MethodSource("makingBigNumArgs")
+  fun testMakingBigNum(number: String, k: Int, result: String) {
+    assertEquals(result, solution(number, k))
   }
 }
