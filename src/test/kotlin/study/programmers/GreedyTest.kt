@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
+import study.programmers.greedy.Lifeboat
 import study.programmers.greedy.gymSuit
 import study.programmers.greedy.joyStick
 import study.programmers.greedy.solution
@@ -47,6 +48,17 @@ class GreedyTest {
       Arguments.of("31", 1, "3"),
       Arguments.of("111", 2, "1"),
     )
+
+    @JvmStatic
+    fun lifeboatArgs() = Stream.of(
+      Arguments.of(intArrayOf(70, 50, 80, 50), 100, 3),
+      Arguments.of(intArrayOf(70, 80, 50), 100, 3),
+      Arguments.of(intArrayOf(100), 100, 1),
+      Arguments.of(intArrayOf(100, 100), 100, 2),
+      Arguments.of(intArrayOf(30, 30, 30), 100, 2),
+      Arguments.of(intArrayOf(60, 60), 100, 2),
+      Arguments.of(intArrayOf(60, 60, 60, 60), 240, 2),
+    )
   }
 
   @ParameterizedTest
@@ -65,5 +77,11 @@ class GreedyTest {
   @MethodSource("makingBigNumArgs")
   fun testMakingBigNum(number: String, k: Int, result: String) {
     assertEquals(result, solution(number, k))
+  }
+
+  @ParameterizedTest
+  @MethodSource("lifeboatArgs")
+  fun testLifeboat(people: IntArray, limit: Int, result: Int) {
+    assertEquals(result, Lifeboat().solution(people, limit))
   }
 }
