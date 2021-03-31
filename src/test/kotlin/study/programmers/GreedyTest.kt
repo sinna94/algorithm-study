@@ -4,10 +4,7 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
-import study.programmers.greedy.Lifeboat
-import study.programmers.greedy.gymSuit
-import study.programmers.greedy.joyStick
-import study.programmers.greedy.solution
+import study.programmers.greedy.*
 import java.util.stream.Stream
 import kotlin.time.ExperimentalTime
 
@@ -59,6 +56,43 @@ class GreedyTest {
       Arguments.of(intArrayOf(60, 60), 100, 2),
       Arguments.of(intArrayOf(60, 60, 60, 60), 240, 2),
     )
+
+    @JvmStatic
+    fun connectionIslandArgs() = Stream.of(
+      Arguments.of(
+        4,
+        arrayOf(
+          intArrayOf(0, 1, 1),
+          intArrayOf(0, 2, 2),
+          intArrayOf(1, 2, 5),
+          intArrayOf(1, 3, 1),
+          intArrayOf(2, 3, 8),
+        ),
+        4
+      ),
+      Arguments.of(
+        4,
+        arrayOf(
+          intArrayOf(0, 1, 5),
+          intArrayOf(0, 2, 3),
+          intArrayOf(2, 3, 3),
+          intArrayOf(3, 1, 2),
+          intArrayOf(3, 0, 4),
+        ),
+        8
+      ),
+      Arguments.of(
+        5,
+        arrayOf(
+          intArrayOf(0, 1, 1),
+          intArrayOf(3, 1, 1),
+          intArrayOf(0, 2, 2),
+          intArrayOf(0, 3, 2),
+          intArrayOf(0, 4, 100),
+        ),
+        104
+      ),
+    )
   }
 
   @ParameterizedTest
@@ -83,5 +117,11 @@ class GreedyTest {
   @MethodSource("lifeboatArgs")
   fun testLifeboat(people: IntArray, limit: Int, result: Int) {
     assertEquals(result, Lifeboat().solution(people, limit))
+  }
+
+  @ParameterizedTest
+  @MethodSource("connectionIslandArgs")
+  fun testConnectingIsland(n: Int, costs: Array<IntArray>, result: Int) {
+    assertEquals(result, connectingIsland(n, costs))
   }
 }
