@@ -93,6 +93,19 @@ class GreedyTest {
         104
       ),
     )
+
+    @JvmStatic
+    fun enforcementCameraArgs() = Stream.of(
+      Arguments.of(
+        arrayOf(
+          intArrayOf(-20, 15),
+          intArrayOf(-14, -5),
+          intArrayOf(-18, -13),
+          intArrayOf(-5, -3),
+        ),
+        2
+      ),
+    )
   }
 
   @ParameterizedTest
@@ -123,5 +136,11 @@ class GreedyTest {
   @MethodSource("connectionIslandArgs")
   fun testConnectingIsland(n: Int, costs: Array<IntArray>, result: Int) {
     assertEquals(result, connectingIsland(n, costs))
+  }
+
+  @ParameterizedTest
+  @MethodSource("enforcementCameraArgs")
+  fun testEnforcementCamera(routes: Array<IntArray>, result: Int) {
+    assertEquals(result, EnforcementCamera().solution(routes))
   }
 }
