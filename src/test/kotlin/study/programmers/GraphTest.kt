@@ -11,6 +11,7 @@ import study.programmers.dynamic_programming.RoadToSchool
 import study.programmers.dynamic_programming.Thievery
 import study.programmers.dynamic_programming.expressedByN
 import study.programmers.graph.farthestNode
+import study.programmers.graph.ranking
 import java.util.stream.Stream
 
 class GraphTest {
@@ -30,11 +31,32 @@ class GraphTest {
         3
       ),
     )
+
+    @JvmStatic
+    fun rankingArgs(): Stream<Arguments> = Stream.of(
+      Arguments.of(
+        5,
+        arrayOf(
+          intArrayOf(4, 3),
+          intArrayOf(4, 2),
+          intArrayOf(3, 2),
+          intArrayOf(1, 2),
+          intArrayOf(2, 5),
+        ),
+        2
+      )
+    )
   }
 
   @ParameterizedTest
   @MethodSource("farthestNodeArgs")
   fun testFarthestNode(n: Int, edge: Array<IntArray>, answer: Number) {
     assertEquals(answer, farthestNode(n, edge))
+  }
+
+  @ParameterizedTest
+  @MethodSource("rankingArgs")
+  fun testRanking(n: Int, results: Array<IntArray>, answer: Int) {
+    assertEquals(answer, ranking(n, results))
   }
 }
