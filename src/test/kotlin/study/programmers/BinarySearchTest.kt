@@ -6,10 +6,6 @@ import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
 import study.programmers.binary_search.immigration
 import study.programmers.binary_search.steppingStone
-import study.programmers.dynamic_programming.IntegerTriangle
-import study.programmers.dynamic_programming.RoadToSchool
-import study.programmers.dynamic_programming.Thievery
-import study.programmers.dynamic_programming.expressedByN
 import java.util.stream.Stream
 
 class BinarySearchTest {

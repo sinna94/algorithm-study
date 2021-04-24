@@ -12,7 +12,7 @@ fun tapeEquilibrium(A: IntArray): Int {
   var firstPartSum = 0
   var secondPartSum = A.sum()
 
-  for (i in 0 until A.count()-1) {
+  for (i in 0 until A.count() - 1) {
     firstPartSum += A[i]
     secondPartSum -= A[i]
     sumList.add(abs(firstPartSum - secondPartSum))

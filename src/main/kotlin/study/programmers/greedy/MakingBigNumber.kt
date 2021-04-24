@@ -29,7 +29,7 @@ fun solution(number: String, k: Int): String {
 }
 
 /* 통과는 하지만 틀린 답 */
-//fun solution(number: String, k: Int): String {
+// fun solution(number: String, k: Int): String {
 //  var removeCnt = 0
 //  var i = 0
 //  var answer = StringBuilder(number)
@@ -49,4 +49,4 @@ fun solution(number: String, k: Int): String {
 //    i += 1
 //  }
 //  return answer.toString()
-//}
+// }

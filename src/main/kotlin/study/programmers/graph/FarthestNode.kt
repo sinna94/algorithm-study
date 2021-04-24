@@ -11,9 +11,14 @@ fun farthestNode(n: Int, edge: Array<IntArray>): Int {
   val nodes: MutableList<Node> = mutableListOf()
 
   for (i in 1..n) {
-    nodes.add(Node(i, false, edge.filter {
-      it[0] == i || it[1] == i
-    }.map { if (it[0] == i) it[1] else it[0] }))
+    nodes.add(
+      Node(
+        i, false,
+        edge.filter {
+          it[0] == i || it[1] == i
+        }.map { if (it[0] == i) it[1] else it[0] }
+      )
+    )
   }
 
   val queue = LinkedList<Node>()
@@ -30,7 +35,7 @@ fun farthestNode(n: Int, edge: Array<IntArray>): Int {
       val node = queue.poll()
       distanceList[distance] += 1
       node.nextNodes.forEach {
-        nodes[it - 1]?.let { nextNode ->
+        nodes[it - 1].let { nextNode ->
           if (!nextNode.visited) {
             nextNode.visited = true
             queue.add(nextNode)

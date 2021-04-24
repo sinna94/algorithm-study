@@ -22,4 +22,3 @@ class MissingIntegerTest {
     Assertions.assertEquals(expected, solveMissingInteger(A))
   }
 }
-

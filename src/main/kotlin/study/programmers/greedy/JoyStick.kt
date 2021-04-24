@@ -55,8 +55,6 @@ fun joyStick(name: String): Int {
       }
 
       alphabetArray[loc] = nameChar
-
-
     }
     // 현재 위치에서 앞에서 최소거리, 뒤에서 최소거리 중 작은 값 반환
     var targetIndex = targets.minBy {
@@ -74,7 +72,6 @@ fun joyStick(name: String): Int {
     if (loc <= lastIndex) {
       answer++
     }
-
 
     // 처음에서 왼쪽으로 이동시 마지막으로 이동
     if (loc == 0 && direction == -1) {

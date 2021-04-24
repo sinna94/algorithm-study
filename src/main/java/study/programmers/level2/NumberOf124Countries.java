@@ -1,5 +1,9 @@
 package study.programmers.level2;
 
+/*
+ * 2021-04-20
+ * https://programmers.co.kr/learn/courses/30/lessons/12899
+ */
 public class NumberOf124Countries {
   public String solution(int n) {
     int num = n;
@@ -13,7 +17,7 @@ public class NumberOf124Countries {
       if (num % 3 == 0) {
         // 3 의 배수일 때 나머지를 4로 설정하고
         // 다음 값을 (n-1)/로 넣어준다
-        // ex) 9 일때 8/3 
+        // ex) 9 일때 8/3
         num = (num - 1) / 3;
         answer.insert(0, "4");
       } else {

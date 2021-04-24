@@ -1,4 +1,4 @@
-package study.programmers.level2;
+package study.programmers.level2
 
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.params.ParameterizedTest
