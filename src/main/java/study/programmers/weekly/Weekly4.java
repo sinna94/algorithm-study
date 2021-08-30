@@ -7,7 +7,7 @@ import java.util.*;
  * 2021-08-27
  */
 
-public class Weekly3 {
+public class Weekly4 {
 
   static class Language {
     private String name;
