@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class Weekly6Test {
-  static Stream<Arguments> weekly4Args() {
+  static Stream<Arguments> weekly6Args() {
     return Stream.of(
       Arguments.of(
         new int[]{50, 82, 75, 120},
@@ -33,7 +33,7 @@ class Weekly6Test {
 
 
   @ParameterizedTest
-  @MethodSource("weekly4Args")
+  @MethodSource("weekly6Args")
   void solution(int[] weights, String[] head2head, int[] result) {
     assertArrayEquals(result, new Weekly6().solution(weights, head2head));
   }
