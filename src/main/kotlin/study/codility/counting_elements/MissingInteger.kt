@@ -6,16 +6,16 @@ package study.codility.counting_elements
  */
 
 fun solveMissingInteger(A: IntArray): Int {
-  val numSet = A.toSet()
+    val numSet = A.toSet()
 
-  // 코틀린 1.3 기준
-  A.max()?.let {
-    for (i in 1..it + 1) {
-      if (!numSet.contains(i)) {
-        return i
-      }
+    // 코틀린 1.3 기준
+    A.max()?.let {
+        for (i in 1..it + 1) {
+            if (!numSet.contains(i)) {
+                return i
+            }
+        }
     }
-  }
 
-  return 1
+    return 1
 }

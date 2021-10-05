@@ -8,17 +8,17 @@ package study.programmers.dfs_bfs
 var answer = 0
 
 fun targetNumber(numbers: IntArray, target: Int): Int {
-  answer = 0
-  addNumber(0, numbers, 0, target)
-  return answer
+    answer = 0
+    addNumber(0, numbers, 0, target)
+    return answer
 }
 
 fun addNumber(sum: Int, numbers: IntArray, index: Int, target: Int) {
-  if (numbers.count() == index) {
-    if (sum == target)
-      answer++
-  } else {
-    addNumber(sum + numbers[index], numbers, index + 1, target)
-    addNumber(sum + numbers[index] * -1, numbers, index + 1, target)
-  }
+    if (numbers.count() == index) {
+        if (sum == target)
+            answer++
+    } else {
+        addNumber(sum + numbers[index], numbers, index + 1, target)
+        addNumber(sum + numbers[index] * -1, numbers, index + 1, target)
+    }
 }

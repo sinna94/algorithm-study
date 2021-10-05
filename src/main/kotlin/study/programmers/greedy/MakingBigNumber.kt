@@ -1,6 +1,6 @@
 package study.programmers.greedy
 
-import java.util.*
+import java.util.Stack
 
 /**
  * 2020-03-25
@@ -9,23 +9,23 @@ import java.util.*
 
 fun solution(number: String, k: Int): String {
 
-  val stack: Stack<Char> = Stack()
-  var removeCount = 0
+    val stack: Stack<Char> = Stack()
+    var removeCount = 0
 
-  number.forEach {
-    while (!stack.isEmpty() && stack.peek() < it && removeCount < k) {
-      stack.pop()
-      removeCount += 1
+    number.forEach {
+        while (!stack.isEmpty() && stack.peek() < it && removeCount < k) {
+            stack.pop()
+            removeCount += 1
+        }
+        stack.push(it)
     }
-    stack.push(it)
-  }
 
-  while (removeCount < k) {
-    stack.pop()
-    removeCount += 1
-  }
+    while (removeCount < k) {
+        stack.pop()
+        removeCount += 1
+    }
 
-  return stack.joinToString("")
+    return stack.joinToString("")
 }
 
 /* 통과는 하지만 틀린 답 */

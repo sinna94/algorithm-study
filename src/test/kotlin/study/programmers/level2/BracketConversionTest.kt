@@ -7,30 +7,29 @@ import org.junit.jupiter.params.provider.MethodSource
 import java.util.stream.Stream
 
 class BracketConversionTest {
-  companion object {
-    @JvmStatic
-    fun args(): Stream<Arguments> {
-      return Stream.of(
-        Arguments.of(
-          "(()())()", "(()())()"
-        ),
-        Arguments.of(
-          ")(", "()"
-        ),
-        Arguments.of(
-          "()))((()", "()(())()"
-        ),
-        Arguments.of(
-          ")()()()(", "(((())))"
-        ),
-      )
+    companion object {
+        @JvmStatic
+        fun args(): Stream<Arguments> {
+            return Stream.of(
+                Arguments.of(
+                    "(()())()", "(()())()"
+                ),
+                Arguments.of(
+                    ")(", "()"
+                ),
+                Arguments.of(
+                    "()))((()", "()(())()"
+                ),
+                Arguments.of(
+                    ")()()()(", "(((())))"
+                ),
+            )
+        }
     }
-  }
 
-
-  @ParameterizedTest
-  @MethodSource("args")
-  fun test(p: String, result: String) {
-    assertEquals(result, BracketConversion().solution(p))
-  }
+    @ParameterizedTest
+    @MethodSource("args")
+    fun test(p: String, result: String) {
+        assertEquals(result, BracketConversion().solution(p))
+    }
 }

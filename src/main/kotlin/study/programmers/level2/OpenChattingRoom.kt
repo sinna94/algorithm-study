@@ -7,27 +7,27 @@ package study.programmers.level2
 
 fun openChattingRoom(record: Array<String>): Array<String> {
 
-  val hiMessage = "님이 들어왔습니다."
-  val byeMessage = "님이 나갔습니다."
+    val hiMessage = "님이 들어왔습니다."
+    val byeMessage = "님이 나갔습니다."
 
-  val userMap = mutableMapOf<String, String>()
-  val answer = mutableListOf<Pair<String, String>>()
+    val userMap = mutableMapOf<String, String>()
+    val answer = mutableListOf<Pair<String, String>>()
 
-  record.forEach {
-    val messageList = it.split(" ")
-    when (messageList[0]) {
-      "Enter" -> {
-        userMap[messageList[1]] = messageList[2]
-        answer.add(Pair(messageList[1], hiMessage))
-      }
-      "Leave" -> {
-        answer.add(Pair(messageList[1], byeMessage))
-      }
-      "Change" -> {
-        userMap[messageList[1]] = messageList[2]
-      }
+    record.forEach {
+        val messageList = it.split(" ")
+        when (messageList[0]) {
+            "Enter" -> {
+                userMap[messageList[1]] = messageList[2]
+                answer.add(Pair(messageList[1], hiMessage))
+            }
+            "Leave" -> {
+                answer.add(Pair(messageList[1], byeMessage))
+            }
+            "Change" -> {
+                userMap[messageList[1]] = messageList[2]
+            }
+        }
     }
-  }
 
-  return answer.map { userMap[it.first] + it.second }.toTypedArray()
+    return answer.map { userMap[it.first] + it.second }.toTypedArray()
 }

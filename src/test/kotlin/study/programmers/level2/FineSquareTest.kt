@@ -6,13 +6,13 @@ import org.junit.jupiter.params.provider.CsvSource
 
 internal class FineSquareTest {
 
-  @CsvSource(
-    value = [
-      "8,12,80"
-    ]
-  )
-  @ParameterizedTest
-  fun fineSquare(w: Int, h: Int, result: Long) {
-    assertEquals(result, fineSquare(w, h))
-  }
+    @CsvSource(
+        value = [
+            "8,12,80"
+        ]
+    )
+    @ParameterizedTest
+    fun fineSquare(w: Int, h: Int, result: Long) {
+        assertEquals(result, fineSquare(w, h))
+    }
 }

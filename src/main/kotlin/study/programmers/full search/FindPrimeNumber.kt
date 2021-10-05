@@ -5,50 +5,50 @@ package study.programmers.`full search`
  */
 
 class FindPrimeNumber {
-  fun solution(numbers: String): Int {
-    val numberValues = numbers.map { it.toString() }
-    val numbersGroup = numbers.groupBy { it }
-    val numberList = ArrayList<String>()
-    val newNumberList = ArrayList<String>()
+    fun solution(numbers: String): Int {
+        val numberValues = numbers.map { it.toString() }
+        val numbersGroup = numbers.groupBy { it }
+        val numberList = ArrayList<String>()
+        val newNumberList = ArrayList<String>()
 
-    for (i in 0 until numbers.count()) {
-      if (numberList.isEmpty()) {
-        numberValues.forEach {
-          numberList.add(it)
+        for (i in 0 until numbers.count()) {
+            if (numberList.isEmpty()) {
+                numberValues.forEach {
+                    numberList.add(it)
+                }
+            } else {
+                numberList.forEach { n ->
+                    newNumberList += numberValues.map { v ->
+                        n + v
+                    }
+                }
+                numberList += newNumberList
+            }
         }
-      } else {
-        numberList.forEach { n ->
-          newNumberList += numberValues.map { v ->
-            n + v
-          }
-        }
-        numberList += newNumberList
-      }
+
+        return numberList.filter { s ->
+            s.groupBy { it }.all {
+                it.value.count() <= numbersGroup[it.key]?.count() ?: 0
+            } && isPrime(s.toInt())
+        }.map { it.toInt() }.toSet().count()
     }
 
-    return numberList.filter { s ->
-      s.groupBy { it }.all {
-        it.value.count() <= numbersGroup[it.key]?.count() ?: 0
-      } && isPrime(s.toInt())
-    }.map { it.toInt() }.toSet().count()
-  }
+    private fun isPrime(num: Int): Boolean {
+        if (num <= 1)
+            return false
+        if (num == 2)
+            return true
 
-  private fun isPrime(num: Int): Boolean {
-    if (num <= 1)
-      return false
-    if (num == 2)
-      return true
+        if ((num % 2) == 0)
+            return false
 
-    if ((num % 2) == 0)
-      return false
+        var i = 3
 
-    var i = 3
-
-    while (i * i <= num) {
-      if (num % i == 0)
-        return false
-      i++
+        while (i * i <= num) {
+            if (num % i == 0)
+                return false
+            i++
+        }
+        return true
     }
-    return true
-  }
 }

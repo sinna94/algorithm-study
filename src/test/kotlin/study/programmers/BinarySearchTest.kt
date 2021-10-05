@@ -9,27 +9,27 @@ import study.programmers.binary_search.steppingStone
 import java.util.stream.Stream
 
 class BinarySearchTest {
-  companion object {
-    @JvmStatic
-    fun immigrationArgs(): Stream<Arguments> = Stream.of(
-      Arguments.of(6, intArrayOf(7, 10), 28),
-    )
+    companion object {
+        @JvmStatic
+        fun immigrationArgs(): Stream<Arguments> = Stream.of(
+            Arguments.of(6, intArrayOf(7, 10), 28),
+        )
 
-    @JvmStatic
-    fun steppingStoneArgs(): Stream<Arguments> = Stream.of(
-      Arguments.of(25, intArrayOf(2, 14, 11, 21, 17), 2, 4),
-    )
-  }
+        @JvmStatic
+        fun steppingStoneArgs(): Stream<Arguments> = Stream.of(
+            Arguments.of(25, intArrayOf(2, 14, 11, 21, 17), 2, 4),
+        )
+    }
 
-  @ParameterizedTest
-  @MethodSource("immigrationArgs")
-  fun testImmigration(n: Int, times: IntArray, answer: Long) {
-    assertEquals(answer, immigration(n, times))
-  }
+    @ParameterizedTest
+    @MethodSource("immigrationArgs")
+    fun testImmigration(n: Int, times: IntArray, answer: Long) {
+        assertEquals(answer, immigration(n, times))
+    }
 
-  @ParameterizedTest
-  @MethodSource("steppingStoneArgs")
-  fun testSteppingStone(distance: Int, rocks: IntArray, n: Int, answer: Int) {
-    assertEquals(answer, steppingStone(distance, rocks, n))
-  }
+    @ParameterizedTest
+    @MethodSource("steppingStoneArgs")
+    fun testSteppingStone(distance: Int, rocks: IntArray, n: Int, answer: Int) {
+        assertEquals(answer, steppingStone(distance, rocks, n))
+    }
 }

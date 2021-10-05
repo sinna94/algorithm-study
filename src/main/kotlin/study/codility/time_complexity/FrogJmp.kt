@@ -8,11 +8,11 @@ import kotlin.math.ceil
  */
 fun frogJmp(X: Int, Y: Int, D: Int): Int {
 
-  val distance = Y - X
+    val distance = Y - X
 
-  return if (distance != 0) {
-    ceil(distance.toDouble() / D).toInt()
-  } else {
-    0
-  }
+    return if (distance != 0) {
+        ceil(distance.toDouble() / D).toInt()
+    } else {
+        0
+    }
 }

@@ -8,15 +8,15 @@ import kotlin.math.abs
  */
 fun tapeEquilibrium(A: IntArray): Int {
 
-  var sumList = mutableListOf<Int>()
-  var firstPartSum = 0
-  var secondPartSum = A.sum()
+    var sumList = mutableListOf<Int>()
+    var firstPartSum = 0
+    var secondPartSum = A.sum()
 
-  for (i in 0 until A.count() - 1) {
-    firstPartSum += A[i]
-    secondPartSum -= A[i]
-    sumList.add(abs(firstPartSum - secondPartSum))
-  }
+    for (i in 0 until A.count() - 1) {
+        firstPartSum += A[i]
+        secondPartSum -= A[i]
+        sumList.add(abs(firstPartSum - secondPartSum))
+    }
 
-  return sumList.min() ?: 0
+    return sumList.min() ?: 0
 }
